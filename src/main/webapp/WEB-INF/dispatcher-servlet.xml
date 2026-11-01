@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+
+    <import resource="classpath:applicationContext.xml"/>
+
+    <bean id="bookListController" class="com.library.controller.BookListController">
+        <constructor-arg ref="bookService"/>
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+    <bean id="bookDetailController" class="com.library.controller.BookDetailController">
+        <constructor-arg ref="bookService"/>
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+    <bean id="addBookController" class="com.library.controller.AddBookController">
+        <constructor-arg ref="bookService"/>
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+    <bean id="authorListController" class="com.library.controller.AuthorListController">
+        <constructor-arg ref="authorService"/>
+    </bean>
+
+
+
+
+    <bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
+        <property name="suffix" value=".jsp"/>
+        <property name="prefix" value="/WEB-INF/views/"/>
+    </bean>
+    
+    <bean class="org.springframework.web.servlet.handler.SimpleUrlHandlerMapping">
+        <property name="mappings">
+            <props>
+                <prop key="/books">bookListController</prop>
+                <prop key="/books/detail">bookDetailController</prop>
+                <prop key="/books/add">addBookController</prop>
+                <prop key="/authors">authorListController</prop>
+            </props>
+        </property>
+    </bean>
+
+</beans>

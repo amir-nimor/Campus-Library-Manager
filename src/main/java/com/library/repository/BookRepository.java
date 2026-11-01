@@ -21,7 +21,7 @@ public class BookRepository {
 
 
     public Book findById(Long id){
-        return (Book) bookList.stream().filter(b -> b.getId() == id);
+        return bookList.stream().filter(b -> b.getId() == id).toList().get(0);
     }
 
     public void addBook(Book book){

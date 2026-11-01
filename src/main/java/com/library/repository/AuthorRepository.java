@@ -20,6 +20,6 @@ public class AuthorRepository {
     }
 
     public Author findBuId(Long id){
-        return (Author) authorList.stream().filter(a -> a.getId() == id);
+        return authorList.stream().filter(a -> a.getId() == id).toList().get(0);
     }
 }
