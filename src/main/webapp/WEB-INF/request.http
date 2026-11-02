@@ -1,1 +1,18 @@
-GET localhost:8080/Campus_Library_Manager_war
+GET localhost:8080/Campus_Library_Manager_war/books
+
+###
+
+
+GET http://localhost:8080/Campus_Library_Manager_war/books/detail?id=4
+
+
+###
+
+POST http://localhost:8080/Campus_Library_Manager_war/books/add
+Content-Type: application/x-www-form-urlencoded
+
+title=amir&pages=25&authorId=2
+
+###
+GET http://localhost:8080/Campus_Library_Manager_war/authors
+

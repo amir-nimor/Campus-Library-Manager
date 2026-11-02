@@ -29,6 +29,7 @@ public class AddBookController implements Controller {
             Long authorId = Long.valueOf(request.getParameter("authorId"));
             Book book = new Book((long) (bookService.findAll().size()+1),title,authorId,pages);
             bookService.addBook(book);
+            response.setStatus(302);
             response.sendRedirect(request.getContextPath() + "/books");
             return null;
         }else {
